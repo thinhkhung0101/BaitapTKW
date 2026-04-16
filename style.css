@@ -120,6 +120,12 @@ h1 {
   line-height: 1.7;
 }
 
+.source-note {
+  color: var(--accent-dark);
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .video-link,
 .watch-button,
 .back-link {
