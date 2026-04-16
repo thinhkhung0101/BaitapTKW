@@ -1,85 +1,189 @@
+:root {
+  --bg-start: #fff9fc;
+  --bg-end: #ffdce9;
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --card-border: #f4bfd4;
+  --text-main: #7a3f58;
+  --text-soft: #a1657f;
+  --accent: #e66797;
+  --accent-dark: #c94c78;
+  --shadow: 0 18px 40px rgba(219, 120, 161, 0.16);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: "Segoe UI", Tahoma, sans-serif;
-  background: #f7f1ea;
-  color: #222222;
+  color: var(--text-main);
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+}
+
+a {
+  color: inherit;
 }
 
 .container {
-  width: min(900px, calc(100% - 32px));
-  margin: 40px auto;
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 40px 0;
 }
 
 .hero,
 .detail-card {
-  background: #ffffff;
-  border: 2px solid #d8c3a5;
-  border-radius: 18px;
-  padding: 28px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
 }
 
-h1 {
-  margin-top: 0;
-  color: #8b4513;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #ffe6f0;
+  color: var(--accent-dark);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.subtitle {
-  margin-bottom: 24px;
-  line-height: 1.6;
-}
-
-.video-list {
-  list-style: none;
-  padding: 0;
+h1,
+h2 {
   margin: 0;
 }
 
-.video-list li + li {
-  margin-top: 14px;
+h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.15;
 }
 
-.video-link {
-  display: block;
-  padding: 16px 18px;
-  background: #fff7ef;
-  border: 1px solid #d8c3a5;
-  border-radius: 12px;
-  color: #5c3317;
-  font-size: 18px;
-  text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
+.subtitle {
+  margin: 14px 0 0;
+  max-width: 720px;
+  color: var(--text-soft);
+  font-size: 17px;
+  line-height: 1.7;
 }
 
-.video-link:hover {
-  background: #fbe4c8;
-  transform: translateX(4px);
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
 }
 
-.back-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #8b4513;
-  text-decoration: none;
+.song-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid #f7cada;
+  border-radius: 22px;
+  background: #fffefe;
+  box-shadow: 0 12px 28px rgba(230, 103, 151, 0.08);
+}
+
+.song-number {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #fff0f6;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.song-card h2 {
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.artist {
+  margin: 0;
+  color: var(--accent-dark);
   font-weight: 600;
 }
 
+.song-summary,
+.song-info p {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+.video-link,
+.watch-button,
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 140px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.video-link,
+.watch-button {
+  margin-top: auto;
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(230, 103, 151, 0.2);
+}
+
+.video-link:hover,
+.watch-button:hover {
+  transform: translateY(-2px);
+  background: var(--accent-dark);
+}
+
+.back-link {
+  margin-bottom: 22px;
+  padding: 0;
+  min-width: 0;
+  color: var(--accent-dark);
+}
+
 .back-link:hover {
-  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.player-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  min-height: 220px;
+  margin: 24px 0;
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid #f8cddd;
+  background: linear-gradient(135deg, #fff6fa 0%, #ffdce8 100%);
 }
 
 .video-frame {
   position: relative;
   width: 100%;
   padding-top: 56.25%;
-  margin: 20px 0;
-  border-radius: 14px;
+  margin: 24px 0;
   overflow: hidden;
+  border: 1px solid #f7cada;
+  border-radius: 24px;
   background: #000000;
+  box-shadow: 0 14px 30px rgba(230, 103, 151, 0.14);
 }
 
 .video-frame iframe {
@@ -90,26 +194,48 @@ h1 {
   border: 0;
 }
 
+.player-label {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+}
+
+.player-title {
+  margin: 0;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.2;
+}
+
 .song-info {
-  line-height: 1.7;
-  font-size: 17px;
+  display: grid;
+  gap: 12px;
 }
 
-.song-info p {
-  margin: 0 0 12px;
-}
-
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .container {
-    margin: 20px auto;
+    width: min(100% - 20px, 1100px);
+    padding: 20px 0;
   }
 
   .hero,
   .detail-card {
-    padding: 20px;
+    padding: 22px;
+    border-radius: 22px;
   }
 
-  .video-link {
-    font-size: 16px;
+  .song-card {
+    border-radius: 18px;
+  }
+
+  .player-card {
+    min-height: 190px;
+    padding: 22px;
+  }
+
+  .video-frame {
+    border-radius: 18px;
   }
 }
